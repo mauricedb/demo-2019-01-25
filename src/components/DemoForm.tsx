@@ -46,13 +46,24 @@ class DemoForm extends Component<{}, DemoFormState> {
           onChange={this.changePerson}
           caption="Achternaam: "
         />
+        {person.firstName === 'pietje' && (
+          <LabledInput
+            name="age"
+            value={person.age || ''}
+            type="number"
+            onChange={this.changePerson}
+            caption="Leeftijd: "
+          />
+        )}
         <LabledInput
           name="age"
+          style={{ display: person.firstName === 'pietje' ? 'block' : 'none' }}
           value={person.age || ''}
           type="number"
           onChange={this.changePerson}
           caption="Leeftijd: "
         />
+
         <div>{JSON.stringify(person)}</div>
       </form>
     );

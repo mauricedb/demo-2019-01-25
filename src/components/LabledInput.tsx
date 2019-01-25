@@ -7,6 +7,7 @@ type LabledInputProps = {
   onChange: (e: { name: string; value: string | number }) => void;
   type?: 'text' | 'number' | 'bla';
   className?: string;
+  style?: any;
 };
 
 class LabledInput extends Component<LabledInputProps> {
@@ -17,11 +18,12 @@ class LabledInput extends Component<LabledInputProps> {
       caption: label,
       onChange,
       type,
-      className
+      className,
+      style
     } = this.props;
 
     return (
-      <div className={'default ' + className}>
+      <div className={'default ' + className} style={style}>
         <label className="label" htmlFor={name}>
           {label}
         </label>
