@@ -1,4 +1,4 @@
-import React, { Component, ChangeEvent } from 'react';
+import React, { Component, ChangeEvent, CSSProperties } from 'react';
 
 type LabledInputProps = {
   value: string | number;
@@ -7,7 +7,7 @@ type LabledInputProps = {
   onChange: (e: { name: string; value: string | number }) => void;
   type?: 'text' | 'number' | 'bla';
   className?: string;
-  style?: any;
+  style?: CSSProperties;
 };
 
 class LabledInput extends Component<LabledInputProps> {

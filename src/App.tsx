@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import DemoForm from './components/DemoForm'
+import Movies from './components/Movies';
 
 class App extends Component {
   render() {
@@ -12,6 +13,8 @@ class App extends Component {
         </header>
 
         <DemoForm />
+
+        <Movies />
       </div>
     );
   }
