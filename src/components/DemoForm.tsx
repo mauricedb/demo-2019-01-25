@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, ChangeEvent } from 'react';
 import './DemoForm.css';
+import LabledInput from './LabledInput';
 
 type Person = {
   firstName: string;
@@ -19,8 +20,8 @@ class DemoForm extends Component<{}, DemoFormState> {
     }
   };
 
-  changePerson = (e: any) => {
-    const { name, value } = e.target;
+  changePerson = (e: { name: string; value: string | number }) => {
+    const { name, value } = e;
     const person = { ...this.state.person, [name]: value };
     this.setState({ person });
   };
@@ -32,30 +33,26 @@ class DemoForm extends Component<{}, DemoFormState> {
       <form>
         <h2>Demo</h2>
 
-        <div>
-          <label className="label" htmlFor="firstName">
-            Voornaam:
-          </label>
-          <input
-            type="text"
-            id="firstName"
-            value={person.firstName}
-            name="firstName"
-            onChange={this.changePerson}
-          />
-        </div>
-        <div>
-          <label className="label" htmlFor="lastName">
-            Achternaam:
-          </label>
-          <input
-            type="text"
-            id="lastName"
-            name="lastName"
-            value={person.lastName}
-            onChange={this.changePerson}
-          />
-        </div>
+        <LabledInput
+          className="cool stuff"
+          name="firstName"
+          value={person.firstName}
+          onChange={this.changePerson}
+          caption="Voornaam:"
+        />
+        <LabledInput
+          name="lastName"
+          value={person.lastName}
+          onChange={this.changePerson}
+          caption="Achternaam: "
+        />
+        <LabledInput
+          name="age"
+          value={person.age || ''}
+          type="number"
+          onChange={this.changePerson}
+          caption="Leeftijd: "
+        />
         <div>{JSON.stringify(person)}</div>
       </form>
     );
